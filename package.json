@@ -1,0 +1,50 @@
+{
+  "name": "arealator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "start": "webpack serve",
+    "build": "webpack --config=webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrianRodriguezDev/AreaLator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrianRodriguezDev/AreaLator/issues"
+  },
+  "homepage": "https://github.com/AdrianRodriguezDev/AreaLator#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
+    "katex": "^0.12.0",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-cookie": "^4.0.3",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-toastify": "^6.2.0",
+    "react-xml-parser": "^1.1.8"
+  }
+}
