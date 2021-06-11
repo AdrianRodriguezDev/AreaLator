@@ -1,0 +1,32 @@
+.centerContentHorizontal {
+  text-align: center;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.alignMiddleHV {
+  height: 100vh;
+  align-items: center;
+}
+
+.marginTop-12 {
+  margin-top: 12px;
+}
+
+.linkForNav {
+  color: darkgray;
+}
+
+.linkForNav:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-item:active {
+  background-color: lightgray;
+}
+
+.marginSides-12 {
+  margin: 0 12px;
+}
