@@ -69,7 +69,7 @@ const Login = ({ history, cookies }) => {
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="text"
-              placeholder="jane@example.com"
+              placeholder="usuario@email.com"
               name="txtEmail"
               required
             />

@@ -24,7 +24,7 @@ const Register = ({ history }) => {
     data.append("password", txtPwd);
 
     axios({
-      url: "http://localhost:8080/GeoCalcApi/user",
+      url: "http://localhost:8080/AreaLatorApi/user",
       method: "POST",
       data: data,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -42,7 +42,7 @@ const Register = ({ history }) => {
   };
 
   const goBack = () => {
-    history.replace("/GeoCalcApi");
+    history.replace("/AreaLatorApi");
   };
 
   return (
@@ -64,7 +64,7 @@ const Register = ({ history }) => {
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Jane"
+                  placeholder="Adrian"
                   name="txtName"
                   required
                 />
@@ -75,7 +75,7 @@ const Register = ({ history }) => {
                 <Form.Label>Apellidos</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Doe"
+                  placeholder="Rodriguez"
                   name="txtLastName"
                   required
                 />
@@ -89,7 +89,7 @@ const Register = ({ history }) => {
                 <Form.Control
                   required
                   type="email"
-                  placeholder="jane@example.com"
+                  placeholder="usuario@email.com"
                   name="txtEmail"
                 />
               </Form.Group>
@@ -120,6 +120,7 @@ const Register = ({ history }) => {
                   Registrarse
                 </Button>
               )}
+
             </Col>
             <Col xs={12} md={6}>
               <Button
