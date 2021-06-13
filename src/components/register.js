@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from "../assets/logo.png";
-import XMLParser from "react-xml-parser";
+import {XMLParser} from "react-xml-parser";
 
 const Register = ({ history }) => {
   const [isLoding, switchLoading] = useState(false);
@@ -17,7 +17,7 @@ const Register = ({ history }) => {
     const txtPwd = e.target[3].value;
     switchLoading(true);
     const data = new URLSearchParams();
-
+    
     data.append("email", txtEmail);
     data.append("name", txtName);
     data.append("lastName", txtLastName);

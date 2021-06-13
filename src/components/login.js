@@ -26,7 +26,7 @@ const Login = ({ history, cookies }) => {
     setLoading(true);
 
     axios({
-      url: "http://localhost:8080/AreaLatorApi/user",
+      url: "http://localhost:8080/AreaLatorApi/User",
       method: "GET",
       params: data,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
