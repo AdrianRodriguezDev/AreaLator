@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from "../assets/logo.png";
-import {XMLParser} from "react-xml-parser";
+import XMLParser from "react-xml-parser";
 
 const Register = ({ history }) => {
   const [isLoding, switchLoading] = useState(false);
@@ -24,7 +24,7 @@ const Register = ({ history }) => {
     data.append("password", txtPwd);
 
     axios({
-      url: "http://localhost:8080/AreaLatorApi/user",
+      url: "http://localhost:8080/AreaLatorApi/User",
       method: "POST",
       data: data,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

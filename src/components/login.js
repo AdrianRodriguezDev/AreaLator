@@ -12,7 +12,7 @@ const Login = ({ history, cookies }) => {
 
   useEffect(() => {
     if (cookies.get("name") && cookies.get("name") !== "")
-      history.replace("/AreaLatorApi/calc");
+      history.replace("/AreaLatorApi/calculadora");
   });
 
   const onSubmit = (e) => {

@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { withCookies } from "react-cookie";
 import { Link, withRouter } from "react-router-dom";
+import MusicPlayer from "./musicPlayer";
 
 const BASE_ROUTE = "/AreaLatorApi/calc";
 
@@ -14,14 +15,15 @@ const NavBar = ({ cookies, history }) => {
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>
+          <MusicPlayer/>
           <Navbar.Text style={{ color: "white" }}>
-            {`Ha iniciado sesion como: ${cookies.get("name")} ${cookies.get(
+            {`Bienvenido, ${cookies.get("name")} ${cookies.get(
               "lastName"
             )}`}
           </Navbar.Text>
-          <Nav.Link
+          <Nav.Link style = {{color: "white"}}
             onClick={() => {
               cookies.set("name", "", { path: "/" });
               cookies.set("lastName", "", { path: "/" });

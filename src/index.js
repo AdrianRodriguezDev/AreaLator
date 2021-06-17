@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./styles/styles.css";
 
 import NavBar from "./components/navbar";
-import CalcRect from "./components/calc_rect";
+import CalculadoraAreas from "./components/calc_rect";
 import Login from "./components/login";
 import Register from "./components/register";
 
@@ -54,8 +54,8 @@ const App = ({ cookies }) => {
         <Route exact path={`${PATH}/register`}>
           <Register />
         </Route>
-        <Route exact path={`${PATH}/calc`}>
-          <CalcRect />
+        <Route exact path={`${PATH}/calculadora`}>
+          <CalculadoraAreas/>
         </Route>
         <Route path="*">
           <FallBack />

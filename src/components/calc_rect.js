@@ -1,64 +1,134 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Form, Button, ListGroup} from 'react-bootstrap';
+import {Container, Form, Button, Col, Row, Accordion, Card} from 'react-bootstrap';
+import {Chart} from 'chart.js';
 import axios from 'axios';
-import {toast} from 'react-toastify';
 
-const figTypes = [
-  {name: "Cuadrado", value: "cuadrado"},
-  {name: "Triangulo", value: "triangulo"},
-]
+import XMLParser from 'react-xml-parser';
+import {toast} from 'react-toastify'
 
-const defParameters = {
-  base: 0;
-  altura: 0;
-}
 
-const CalcRect = () => {
 
-  const [figSelected, setFigSelected] = useState(figTypes[0].value);
-  const [eqParameters, setEqParameters] = useState(defParameters);
+/*const graficarFigura = () => {
+  const [figParameters, setFigParameters] = useState(defParameters);
   const [data, setData] = useState({});
-  const [exList, setExList] = useState([]);
-  const [isExample, setIsExample] = useState(false);
 
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: "http://localhost:8080/AreaLatorApi/Figuras?type=figuras",
-    })
-    .then((response) => {
-      const xmlData = new XMLParser().parseFromString(response.data);
-      if (xmlData.name === "error") toast.error(xmlData.value);
-      else {
-        const items = xmlData.children;
-        var exItems = [];
-        items.forEach((item) => {
-          const { id, base, altura, type} = item.attributes;
-          const { value } = item;
-          exItems.push({
-            id: Number(id),
-            inp1: Number(base),
-            inp2: Number(altura),
-            type,
-            text: value,
-          });
-        });
-        setExList(exItems);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      toast.error("Ha ocurrido un error al obtener los ejemplos");
-    });
-}, []);
-
-
-
-  return(
-    <div>
-      <h1>Hola mundo</h1>
-    </div>
-  );
+    if(Object.keys(data).length > 0){
+      const
+    }
+  })
 }
+*/
 
-export default CalcRect
+const CalculadoraAreas = () => {
+  const [altura, setAltura] = useState(0.5);
+  const [base, setBase] = useState(0.5);
+  const [area, setArea] = useState(base*altura);
+  const [figura, setFigura] = useState('');
+
+  const aumentarAltura = () =>{
+      setAltura(altura + 0.1)
+      setArea(base*(altura+0.1))
+  }
+
+  const reducirAltura = () => {
+      setAltura(altura - 0.1)
+      setArea(base*(altura-0.1))
+  }
+
+  const aumentarBase = () =>{
+      setBase(base + 0.1)
+      setArea((base+0.1)*altura)
+  }
+
+  const reducirBase = () => {
+      setBase(base - 0.1)
+      setArea((base-0.1)*altura)
+  }
+
+  
+  const cotejarFigura = (event) => {
+    if(event.target.value === ''){
+      setArea('Seleccione figura en el option');
+      setFigura('')
+    }
+      if(event.target.value === 'cuadrado'){
+          setArea(base*altura);
+          setFigura('cuadrado')
+      }else if(event.target.value === 'rectangulo'){
+          setArea(base*altura);
+          setFigura('rectangulo')
+      }else if(event.target.value === 'triangulo'){
+          setArea((base*altura)/2)
+          setFigura('triangulo')          
+      } 
+  };
+
+    //Interfaz
+    return(
+        <Container>
+            <h2 className= "centerContentHorizontal marginTop-12">
+                Calculadora de areas decimales
+            </h2>
+
+            <h5>Introduzca los parametros de la figura deseada</h5>
+            <div style = {{margin: '2%'}}>
+                <Form>
+                    <Form.Group controlId='exampleForm.ControlSelect1'>
+                        <Form.Label>Seleccione la figura deseada</Form.Label>
+                       <Form.Control as = 'select' onChange={cotejarFigura}>
+                            <option value='cuadrado'>Cuadrado</option>
+                            <option value = 'rectangulo'>Rectangulo</option>
+                            <option value = 'triangulo'>Triangulo equilatero</option>
+                        </Form.Control>
+                    </Form.Group>
+                </Form>
+                <Row style = {{margin: '2%'}}>
+                    <Col></Col>
+                    <Col>
+                        <Accordion defaultActiveKey="0">
+                            <Card className='justify-content-md-center'>
+                                <Accordion.Toggle as={Card.Header} eventKey="0">
+                                    Dimensiones
+                                </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="0">
+                                <Card.Body>
+                                <label style={{alignContent: 'center'}}>
+                                    <Button onClick = {reducirBase}>-</Button>
+                                    <label style={{fontSize: '30px'}}>&nbsp;{`${base.toFixed(1)}`}&nbsp;</label>
+                                    <Button onClick = {aumentarBase}>+</Button>
+                                </label>
+                                    &nbsp;
+                                    &nbsp;
+                                    X
+                                    &nbsp;
+                                    &nbsp;
+                                <label>
+                                    <Button className= 'btn btn-danger' onClick = {reducirAltura}>-</Button>
+                                    <label style={{fontSize: '30px'}}>&nbsp;{`${altura.toFixed(1)}`}&nbsp;</label>
+                                    <Button className = 'btn btn-danger' onClick = {aumentarAltura}>+</Button>
+                                </label>
+                                </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                            </Accordion>
+                            <Accordion defaultActiveKey="0">
+                            <Card className = "justify-content-md-center">
+                                <Accordion.Toggle as={Card.Header} eventKey="0">
+                                Area total del modelo:
+                                </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="0">
+                                <Card.Body className='justify-content-md-center'>
+                                    {`Area = ${area.toFixed(2)}`}
+                                </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                            </Accordion>
+                    </Col>
+                </Row>
+            </div>
+        </Container>
+    );
+};
+
+export default CalculadoraAreas;
