@@ -11,6 +11,11 @@ import NavBar from "./components/navbar";
 import CalculadoraAreas from "./components/calc_rect";
 import Login from "./components/login";
 import Register from "./components/register";
+import About from './components/about';
+import WikiCuadrado from './components/wikiCuadrado';
+import WikiRectangulo from './components/wikiRectangulo';
+import WikiTriangulo from './components/wikiTriangulo';
+
 
 const FallBack = () => {
   return (
@@ -56,6 +61,18 @@ const App = ({ cookies }) => {
         </Route>
         <Route exact path={`${PATH}/calculadora`}>
           <CalculadoraAreas/>
+        </Route>
+        <Route exact path = {`${PATH}/about`}>
+          <About/>
+        </Route>
+        <Route exact path = {`${PATH}/wiki/cuadrado`}>
+          <WikiCuadrado/>
+        </Route>
+        <Route exact path = {`${PATH}/wiki/rectangulo`}>
+          <WikiRectangulo/>
+        </Route>
+        <Route exact path = {`${PATH}/wiki/triangulo`}>
+          <WikiTriangulo/>
         </Route>
         <Route path="*">
           <FallBack />

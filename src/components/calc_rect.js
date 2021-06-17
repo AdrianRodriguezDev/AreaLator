@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Form, Button, Col, Row, Accordion, Card} from 'react-bootstrap';
-import {Chart} from 'chart.js';
+import {Container, Form, Button, Col, Row, Accordion, Card, ButtonGroup} from 'react-bootstrap';
 import axios from 'axios';
+import {Scatter} from 'react-chartjs-2';
 
 import XMLParser from 'react-xml-parser';
 import {toast} from 'react-toastify'
@@ -24,7 +24,7 @@ const CalculadoraAreas = () => {
   const [altura, setAltura] = useState(0.5);
   const [base, setBase] = useState(0.5);
   const [area, setArea] = useState(base*altura);
-  const [figura, setFigura] = useState('');
+  const [figura, setFigura] = useState('cuadrado');
 
   const aumentarAltura = () =>{
       setAltura(altura + 0.1)
@@ -60,7 +60,7 @@ const CalculadoraAreas = () => {
           setFigura('rectangulo')
       }else if(event.target.value === 'triangulo'){
           setArea((base*altura)/2)
-          setFigura('triangulo')          
+          setFigura('triangulo')        
       } 
   };
 
@@ -84,7 +84,55 @@ const CalculadoraAreas = () => {
                     </Form.Group>
                 </Form>
                 <Row style = {{margin: '2%'}}>
-                    <Col></Col>
+                    <Col>
+                        <Scatter
+                            data={{
+                                datasets: [{
+                                    label: 'Figura seleccionada',
+                                data: [{
+                                    x: 0,
+                                    y: 0
+                                },
+                                {
+                                    x: 0,
+                                    y: altura.toFixed(2)
+                                }, {
+                                    x: base.toFixed(2),
+                                    y: altura.toFixed(2)
+                                }, {
+                                    x: base.toFixed(2),
+                                    y: 0
+                                }, {
+                                    x: 0,
+                                    y: 0
+                                }],
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgb(255, 99, 132)',
+                                showLine: true,
+                                fill: true,
+                                borderColor: 'black',
+                                borderWidth: 2,
+                                backgroundColor: 'red'
+                                }]
+                            }}
+                            options={{
+                                maintainAspectRatio: true,
+                                scales:{
+                                    y:{
+                                        suggestedMin: 0,
+                                        suggestedMax: 5
+                                    },
+                                    x: {
+                                        suggestedMin: 0,
+                                        suggestedMax:5
+                                    },
+
+                                }
+                            }}
+                            width ={20}
+                            height ={20}
+                        />
+                    </Col>
                     <Col>
                         <Accordion defaultActiveKey="0">
                             <Card className='justify-content-md-center'>
@@ -113,7 +161,7 @@ const CalculadoraAreas = () => {
                             </Card>
                             </Accordion>
                             <Accordion defaultActiveKey="0">
-                            <Card className = "justify-content-md-center">
+                            <Card className = "justify-content-md-center mt-3">
                                 <Accordion.Toggle as={Card.Header} eventKey="0">
                                 Area total del modelo:
                                 </Accordion.Toggle>
@@ -124,6 +172,12 @@ const CalculadoraAreas = () => {
                                 </Accordion.Collapse>
                             </Card>
                             </Accordion>
+                            <ButtonGroup className = 'mt-3'>
+                                  {'  '}<Button variant = "outline-primary">Graficar</Button>{'  '}
+                                  <Button variant = "outline-success">Guardar</Button>{'  '}
+                                  <Button variant = "outline-warning">Modificar</Button>{'  '}
+                                  <Button variant = "outline-danger">Eliminar</Button>{'  '}
+                              </ButtonGroup>
                     </Col>
                 </Row>
             </div>
