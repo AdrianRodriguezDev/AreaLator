@@ -23,8 +23,8 @@ const WikiCuadrado = () => {
                                 y: 0
                             },
                             {
-                                x: 0,
-                                y: 5
+                                x: 5,
+                                y: 0
                             }, {
                                 x: 2.5,
                                 y: 5
@@ -69,13 +69,11 @@ const WikiCuadrado = () => {
                             <Card.Body>
                             <label style={{alignContent: 'center'}}>
                                 <label style={{fontSize: '30px'}}>&nbsp;{`5`}&nbsp;</label>
-                            </label>
                                 &nbsp;
                                 &nbsp;
                                 X
                                 &nbsp;
                                 &nbsp;
-                            <label>
                                 <label style={{fontSize: '30px'}}>&nbsp;{`5`}&nbsp;</label>
                             </label>
                             </Card.Body>
@@ -88,9 +86,11 @@ const WikiCuadrado = () => {
                             Area total del modelo:
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey="0">
-                            <Card.Body className='justify-content-md-center'>
-                                {`Area = ((5)(5))/2`}<sup>2</sup><br/>
+                            <Card.Body style = {{alignContent: 'center'}}>
+                                <h3>
+                                {`Area = ((5)(5))/2`}<br/>
                                 {`Area = 12.5 u`}<sup>2</sup>
+                                </h3>
                             </Card.Body>
                             </Accordion.Collapse>
                         </Card>

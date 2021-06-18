@@ -21,7 +21,7 @@ const NavBar = ({ cookies, history }) => {
           </Link>
         </Nav.Link>
       </Nav.Item>
-      <NavDropdown title="Wiki" id="basic-nav-dropdown">
+      <NavDropdown title="Wiki" id="basic-nav-dropdown" className = 'linkForNav'>
         <NavDropdown.Item>
           <Link to = {`/AreaLatorApi/wiki/cuadrado`} className = 'linkForNav'>
             Cuadrado
